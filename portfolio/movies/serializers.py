@@ -6,7 +6,8 @@ from movies.models import Author, Movie
 class BaseMovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ("name", "movie_type", "description")
+        fields = ("name", "movie_type", "description", "release_date")
+
 
 
 class ListAuthorSerializer(serializers.ModelSerializer):
