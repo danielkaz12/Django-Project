@@ -17,7 +17,7 @@ class Movie(models.Model):
     name = models.CharField("Name", max_length=120, blank=True)
     movie_type = models.CharField("Type", max_length=30, blank=True)
     description = models.CharField("Description", max_length=300, blank=True)
-    release_date = models.DateField("Release date")
+    release_date = models.DateField("Release date", blank=True, null=True)
 
     author = models.ForeignKey(
         Author,
