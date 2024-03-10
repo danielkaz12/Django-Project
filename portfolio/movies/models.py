@@ -21,7 +21,7 @@ class Movie(models.Model):
 
     author = models.ForeignKey(
         Author,
-        verbose_name="Autor",
+        verbose_name="Author",
         on_delete=models.CASCADE,
         related_name="movies",
         blank=True,
