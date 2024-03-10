@@ -1,5 +1,9 @@
 To run the application there must be proceed following steps:
 
+1. Clone github repository:
+
+    git clone https://github.com/danielkaz12/Django-Project.git
+
 1. Create virtual enviroment:
 
     python3 -m venv .virtualenvs/portfolio
