@@ -1,0 +1,36 @@
+[tool.ruff]
+exclude = ["*/migrations/*.py"]
+
+[tool.ruff.lint]
+select = [
+    "F", 
+    "C90", 
+    "I",
+    "N", 
+    "UP", 
+    "A", 
+    "COM", 
+    "C4", 
+    "DJ", 
+    "EXE", 
+    "ISC", 
+    "ICN", 
+    "G", 
+    "INP",
+    "PIE",
+    "T20",
+    "PT",
+    "Q",
+    "RSE",
+    "RET",
+    "SIM",
+    "TID",
+    "INT",
+    "ARG",
+    "PL",
+    "TRY",
+    "FLY",
+    "PERF",
+    "RUF"
+]
+ignore = ["RUF012", "TRY003"]
