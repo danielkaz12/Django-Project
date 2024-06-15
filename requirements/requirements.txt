@@ -8,3 +8,8 @@ psycopg2-binary==2.9.9
 #lint
 black==24.2.0
 ruff==0.3.2
+
+#test
+pytest==8.1.1
+pytest-django==4.8.0
+pytest-icdiff==0.9

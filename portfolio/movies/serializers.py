@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from movies.models import Author, Movie
+from .models import Author, Movie
 
 
 class BaseMovieSerializer(serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class ListMovieSerializer(BaseReadMovieSerializer):
 class ListAuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = ("name", "last_name")
+        fields = ("id","name", "last_name")
 
 
 class DetailAuthorSerializer(ListAuthorSerializer):

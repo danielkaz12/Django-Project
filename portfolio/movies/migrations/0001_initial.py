@@ -34,7 +34,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Author", "verbose_name_plural": "Authors",},
+            options={
+                "verbose_name": "Author",
+                "verbose_name_plural": "Authors",
+            },
         ),
         migrations.CreateModel(
             name="Movie",
@@ -80,6 +83,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "Movie", "verbose_name_plural": "Movies",},
+            options={
+                "verbose_name": "Movie",
+                "verbose_name_plural": "Movies",
+            },
         ),
     ]

@@ -1,3 +1,16 @@
+[project]
+name = "portfolio"
+version = "1.0"
+
+[project.scripts]
+"manage.py" = "portfolio:manage"
+
+[build-system]
+requires = [
+    "setuptools>=69.2.0",
+]
+build-backend = "setuptools.build_meta"
+
 [tool.ruff]
 exclude = ["*/migrations/*.py"]
 

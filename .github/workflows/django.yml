@@ -25,3 +25,6 @@ jobs:
       run: |
         ruff check .
         black .
+    - name: Run Tests
+      run: |
+        ./run_tests.sh
