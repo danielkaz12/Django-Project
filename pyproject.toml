@@ -47,3 +47,6 @@ select = [
     "RUF"
 ]
 ignore = ["RUF012", "TRY003"]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"**/tests/**" = ["ARG001"]

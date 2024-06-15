@@ -1,9 +1,10 @@
-from movies.models import Movie, Author
-import pytest
 import datetime
-from rest_framework import status
-from django.urls import reverse
 from unittest.mock import ANY
+
+import pytest
+from django.urls import reverse
+from movies.models import Author, Movie
+from rest_framework import status
 
 MOVIE_LIST = [
     {
@@ -27,8 +28,8 @@ MOVIE_LIST = [
 ]
 
 
-@pytest.fixture
-@pytest.mark.django_db
+@pytest.fixture()
+@pytest.mark.django_db()
 def movies_fixture():
     author = Author.objects.create(name="Quentin", last_name="Tarantino")
     return Movie.objects.bulk_create(
@@ -48,17 +49,17 @@ def movies_fixture():
                 name="Avengers",
                 movie_type="Action",
             ),
-        )
+        ),
     )
 
 
-@pytest.mark.django_db
+@pytest.mark.django_db()
 def test_movie_viewset_list(client, movies_fixture):
     response = client.get(reverse("movie-list"))
     assert (response.status_code, response.json()) == (status.HTTP_200_OK, MOVIE_LIST)
 
 
-@pytest.mark.django_db
+@pytest.mark.django_db()
 def test_movie_viewset_detail(client, movies_fixture):
     response = client.get(reverse("movie-detail", kwargs={"pk": movies_fixture[0].id}))
     assert (response.status_code, response.json()) == (

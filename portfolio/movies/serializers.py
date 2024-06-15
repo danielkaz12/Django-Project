@@ -22,7 +22,7 @@ class ListMovieSerializer(BaseReadMovieSerializer):
 class ListAuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = ("id","name", "last_name")
+        fields = ("id", "name", "last_name")
 
 
 class DetailAuthorSerializer(ListAuthorSerializer):

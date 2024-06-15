@@ -11,7 +11,8 @@ from .serializers import (
 
 class MovieViewset(viewsets.ModelViewSet):
     queryset = Movie.objects.select_related("author")
-    write_serializer_class=ListMovieSerializer
+    write_serializer_class = ListMovieSerializer
+
     def get_serializer_class(self):
         if self.action == "retrieve":
             return DetailMovieSerializer
@@ -20,7 +21,8 @@ class MovieViewset(viewsets.ModelViewSet):
 
 class AuthorViewset(viewsets.ModelViewSet):
     queryset = Author.objects.all()
-    write_serializer_class=ListAuthorSerializer
+    write_serializer_class = ListAuthorSerializer
+
     def get_serializer_class(self):
         if self.action == "retrieve":
             return DetailAuthorSerializer
