@@ -30,8 +30,18 @@ MOVIE_LIST = [
 
 @pytest.fixture()
 @pytest.mark.django_db()
-def movies_fixture():
-    author = Author.objects.create(name="Quentin", last_name="Tarantino")
+def authors_fixture():
+    return Author.objects.bulk_create(
+        (
+            Author(name="Quentin", last_name="Tarantino"),
+            Author(name="David", last_name="Yates"),
+        ),
+    )
+
+
+@pytest.fixture()
+@pytest.mark.django_db()
+def movies_fixture(authors_fixture):
     return Movie.objects.bulk_create(
         (
             Movie(
@@ -43,7 +53,7 @@ def movies_fixture():
                     "a boxer and a couple robbing people in a restaurant."
                 ),
                 release_date=datetime.date(1994, 10, 14),
-                author=author,
+                author=authors_fixture[0],
             ),
             Movie(
                 name="Avengers",
@@ -66,4 +76,37 @@ def test_movie_viewset_detail(client, movies_fixture):
         status.HTTP_200_OK,
         MOVIE_LIST[0]
         | {"author": {"id": ANY, "last_name": "Tarantino", "name": "Quentin"}},
+    )
+
+
+@pytest.mark.django_db()
+def test_movie_viewset_create(client, movies_fixture, authors_fixture):
+    response = client.post(
+        reverse("movie-list"),
+        {
+            "name": "Harry Potter and the Order of Phoenix",
+            "movie_type": "Fantasy",
+            "description": (
+                "With their warning about Lord Voldemort's return scoffed at, "
+                "Harry and Dumbledore are targeted by the Wizard authorities as an "
+                "authoritarian bureaucrat slowly seizes power at Hogwarts."
+            ),
+            "release_date": "2007-07-27",
+            "author": authors_fixture[1].id,
+        },
+    )
+    assert (response.status_code, response.json()) == (
+        status.HTTP_201_CREATED,
+        {
+            "author": authors_fixture[1].id,
+            "description": (
+                "With their warning about Lord Voldemort's return scoffed at, "
+                "Harry and Dumbledore are targeted by the Wizard authorities as an "
+                "authoritarian bureaucrat slowly seizes power at Hogwarts."
+            ),
+            "id": ANY,
+            "movie_type": "Fantasy",
+            "name": "Harry Potter and the Order of Phoenix",
+            "release_date": "2007-07-27",
+        },
     )

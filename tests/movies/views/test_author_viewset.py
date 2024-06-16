@@ -90,9 +90,5 @@ def test_author_viewset_create(client):
     )
     assert (response.status_code, response.json()) == (
         status.HTTP_201_CREATED,
-        {
-            "id": ANY,
-            "last_name": "Scorsese",
-            "name": "Martin",
-        },
+        {"id": ANY, "last_name": "Scorsese", "name": "Martin"},
     )

@@ -32,10 +32,6 @@ To run the application there must be proceed following steps:
 
 There is a posibility to run application tests. Project use pytest and it can be execute doing according steps:
 
-    1. Create a docker container for test postgres:
-
-    docker run --name pytest -p 5433:5432 -e POSTGRES_DB=pytest -e POSTGRES_USER=pytest -e POSTGRES_PASSWORD=pytest -d postgres:15-alpine
-
-    2. running script:
+    1. running script:
 
     ./run_tests.sh
