@@ -6,11 +6,11 @@ To run the application there must be proceed following steps:
 
 1. Create virtual enviroment:
 
-    python3 -m venv .virtualenvs/portfolio
+    python3 -m venv .venv/portfolio
 
 2. Activate virtual enviroment:
 
-    source .virtualenvs/portfolio/bin/activate
+    source .venv/portfolio/bin/activate
 
 3. Create docker container for postgres:
 
@@ -27,3 +27,11 @@ To run the application there must be proceed following steps:
 6. Type the swagger endpoints in the browser under the url:
 
     http://localhost:8000/
+
+## Tests
+
+There is a posibility to run application tests. Project use pytest and it can be execute doing according steps:
+
+    1. running script:
+
+    ./run_tests.sh
